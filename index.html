@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariwan  Hama Saeed - Academic Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Colors */
+            --navy-700: #1e3a5f;
+            --navy-500: #2c5282;
+            --navy-100: #ebf4ff;
+            --navy-50: #f5f8ff;
+            --page-bg: #fafbfc;
+            --card-bg: #ffffff;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --border-color: #e2e8f0;
+            --success: #10b981;
+            
+            /* Spacing */
+            --xs: 8px;
+            --sm: 16px;
+            --md: 24px;
+            --lg: 32px;
+            --xl: 48px;
+            --xxl: 64px;
+            
+            /* Typography */
+            --font-heading: 'Crimson Pro', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--page-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            padding: var(--lg) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            transition: box-shadow 300ms ease-in-out;
+        }
+
+        header.scrolled {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 var(--md);
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--navy-700);
+            margin-bottom: var(--xs);
+        }
+
+        .title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: var(--sm);
+        }
+
+        .contact-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: var(--sm);
+        }
+
+        .contact-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: var(--navy-50);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--navy-700);
+            text-decoration: none;
+            transition: all 200ms ease;
+        }
+
+        .contact-pill:hover {
+            background: var(--navy-100);
+            border-color: var(--navy-500);
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--xxl) var(--md);
+        }
+
+        /* Section Cards */
+        .section {
+            background: var(--card-bg);
+            padding: var(--lg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(30, 58, 95, 0.08);
+            margin-bottom: var(--lg);
+            transition: all 250ms ease-out;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(30, 58, 95, 0.12);
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--navy-700);
+            margin-bottom: var(--md);
+            position: relative;
+            padding-bottom: var(--xs);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 32px;
+            height: 3px;
+            background: var(--navy-100);
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--navy-700);
+            margin-bottom: var(--sm);
+        }
+
+        /* About Section */
+        .about-text {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+
+        /* Education Entries */
+        .education-entry {
+            margin-bottom: var(--md);
+            padding-bottom: var(--md);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .education-entry:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: var(--sm);
+            margin-bottom: var(--xs);
+        }
+
+        .degree {
+            font-weight: 600;
+            color: var(--navy-700);
+            font-size: 18px;
+        }
+
+        .year-badge {
+            background: var(--navy-100);
+            color: var(--navy-700);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .institution {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-top: 4px;
+        }
+
+        /* Lists */
+        .interest-list, .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--sm);
+        }
+
+        .interest-tag, .skill-tag {
+            background: var(--navy-50);
+            color: var(--navy-700);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 16px;
+            border: 1px solid var(--navy-100);
+        }
+
+        .skills-category {
+            margin-bottom: var(--md);
+        }
+
+        .skills-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-title {
+            font-weight: 600;
+            color: var(--navy-700);
+            margin-bottom: var(--sm);
+            font-size: 18px;
+        }
+
+        .skill-content {
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+
+        /* Publications */
+        .publication-item {
+            margin-bottom: var(--md);
+            padding-left: 12px;
+            border-left: 3px solid var(--navy-100);
+            transition: all 200ms ease;
+        }
+
+        .publication-item:hover {
+            background: var(--navy-50);
+            padding-left: var(--sm);
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: var(--navy-700);
+            line-height: 1.5;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .pub-authors {
+            font-size: 14px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .pub-authors .me {
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .pub-venue {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: var(--xs);
+        }
+
+        .pub-link {
+            color: var(--navy-500);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 200ms ease;
+            display: inline-block;
+        }
+
+        .pub-link:hover {
+            color: var(--navy-700);
+            text-decoration: underline;
+        }
+
+        /* Teaching Experience */
+        .teaching-entry {
+            border-left: 3px solid var(--navy-500);
+            padding: 20px;
+            padding-left: var(--md);
+            background: var(--card-bg);
+            margin-bottom: var(--sm);
+            border-radius: 4px;
+            transition: background 250ms ease;
+        }
+
+        .teaching-entry:hover {
+            background: var(--navy-50);
+        }
+
+        .teaching-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: var(--sm);
+            margin-bottom: var(--sm);
+        }
+
+        .institution-name {
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--navy-700);
+        }
+
+        .date-range {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .teaching-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        /* Reviewer Section */
+        .reviewer-list {
+            list-style: none;
+        }
+
+        .reviewer-list li {
+            padding: var(--sm) 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 16px;
+        }
+
+        .reviewer-list li:last-child {
+            border-bottom: none;
+        }
+
+        .reviewer-list li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            margin-right: var(--sm);
+        }
+
+        /* Certificates */
+        .certificate-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--sm);
+            background: var(--navy-50);
+            border-radius: 6px;
+            margin-bottom: var(--sm);
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: var(--navy-700);
+        }
+
+        .cert-year {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* References */
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--md);
+        }
+
+        .reference-card {
+            padding: var(--md);
+            background: var(--navy-50);
+            border-radius: 8px;
+            border: 1px solid var(--navy-100);
+        }
+
+        .ref-name {
+            font-weight: 600;
+            color: var(--navy-700);
+            margin-bottom: var(--xs);
+        }
+
+        .ref-detail {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+
+        .ref-detail a {
+            color: var(--navy-500);
+            text-decoration: none;
+        }
+
+        .ref-detail a:hover {
+            text-decoration: underline;
+        }
+
+        /* Languages */
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--sm);
+        }
+
+        .language-item {
+            padding: var(--sm);
+            background: var(--navy-50);
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .language-name {
+            font-weight: 600;
+            color: var(--navy-700);
+            margin-bottom: 4px;
+        }
+
+        .language-level {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .section {
+                padding: var(--md);
+            }
+
+            main {
+                padding: var(--xl) var(--sm);
+            }
+
+            .header-content {
+                padding: 0 var(--sm);
+            }
+
+            .education-header,
+            .teaching-header {
+                flex-direction: column;
+            }
+
+            .reference-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Icons */
+        .icon {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="header-content">
+            <h1>Mariwan A. Hama Saeed</h1>
+            <p class="title">BSc, MSc | Lecturer at The University of Halabja</p>
+            <div class="contact-pills">
+                <a href="/cdn-cgi/l/email-protection#3c515d4e554b5d52125d54515958547c5b515d5550125f5351" class="contact-pill">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <span class="__cf_email__" data-cfemail="771a16051e00161959161f1a12131f37101a161e1b5914181a">mariwan.ahmedh@gmail.com</span>
+                </a>
+               
+                <span class="contact-pill">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    +964 770 191 5519
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Section -->
+        <section class="section">
+            <h2>About</h2>
+            <p class="about-text">
+                Experienced Artificial Intelligence researcher, Software Developer, problem solver, and diligent worker with expertise in both team collaboration and independent work. Dedicated to advancing AI research and developing innovative solutions in machine learning, deep learning, and medical informatics.
+            </p>
+        </section>
+
+        <!-- Education Section -->
+        <section class="section">
+            <h2>Education</h2>
+            <div class="education-entry">
+                <div class="education-header">
+                    <div>
+                        <div class="degree">Master of Science (MSc) in Information Technology</div>
+                        <div class="institution">University of Nottingham, United Kingdom</div>
+                    </div>
+                    <span class="year-badge">2012-2013</span>
+                </div>
+            </div>
+            <div class="education-entry">
+                <div class="education-header">
+                    <div>
+                        <div class="degree">Bachelor of Science (BSc) in Computer Science</div>
+                        <div class="institution">School of Science, Sulaimani University, Iraq</div>
+                    </div>
+                    <span class="year-badge">2006-2010</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Interests -->
+        <section class="section">
+            <h2>Research Interests</h2>
+            <div class="interest-list">
+                <span class="interest-tag">Machine Learning</span>
+                <span class="interest-tag">Deep Learning</span>
+                <span class="interest-tag">Medical Informatics</span>
+                <span class="interest-tag">Software Development</span>
+                <span class="interest-tag">Web Development</span>
+            </div>
+        </section>
+
+        <!-- Teaching Interests -->
+        <section class="section">
+            <h2>Teaching Interests</h2>
+            <div class="interest-list">
+                <span class="interest-tag">Machine Learning</span>
+                <span class="interest-tag">Deep Learning</span>
+                <span class="interest-tag">Programming</span>
+                <span class="interest-tag">Database Systems</span>
+                <span class="interest-tag">Software Development</span>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section">
+            <h2>Skills</h2>
+            <div class="skills-category">
+                <div class="category-title">Programming & Frameworks</div>
+                <div class="skill-content">
+                    MATLAB, Python, TensorFlow, PyTorch, Sklearn, Keras, C#, ASP.NET Web Form, MVC Core, Razor Pages
+                </div>
+            </div>
+            <div class="skills-category">
+                <div class="category-title">Machine Learning & AI</div>
+                <div class="skill-content">
+                    Extensive experience with Machine Learning and Deep Learning models, Natural Language Processing (NLTK Library)
+                </div>
+            </div>
+            <div class="skills-category">
+                <div class="category-title">Data Analysis</div>
+                <div class="skill-content">
+                    Text Analysis using Regular Expressions, Text Mining with NLP techniques
+                </div>
+            </div>
+            <div class="skills-category">
+                <div class="category-title">Software Development</div>
+                <div class="skill-content">
+                    SQL SERVER, Bootstrap, Web Development (developed approximately 100 applications ranging from small to large-scale projects)
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section class="section">
+            <h2>Publications</h2>
+            
+            <div class="publication-item">
+                <div class="pub-title">Cardiac disease prediction using AI algorithms with SelectKBest</div>
+                <div class="pub-authors"><span class="me">Saeed, M.H.</span>, Hama, J.I.</div>
+                <div class="pub-venue">Medical & Biological Engineering & Computing (2023)</div>
+                <a href="https://doi.org/10.1007/s11517-023-02918-8" class="pub-link" target="_blank">https://doi.org/10.1007/s11517-023-02918-8</a>
+            </div>
+
+            <div class="publication-item">
+                <div class="pub-title">Improved Speech Emotion Classification Using Deep Neural Network</div>
+                <div class="pub-authors"><span class="me">Hama Saeed, M.</span></div>
+                <div class="pub-venue">Circuits, Systems, and Signal Processing (2023)</div>
+                <a href="https://doi.org/10.1007/s00034-023-02446-8" class="pub-link" target="_blank">https://doi.org/10.1007/s00034-023-02446-8</a>
+            </div>
+
+            <div class="publication-item">
+                <div class="pub-title">Diabetes type 2 classification using machine learning algorithms with up-sampling technique</div>
+                <div class="pub-authors"><span class="me">Hama Saeed, M.A.</span></div>
+                <div class="pub-venue">Journal of Electrical Systems and Information Technology, 10, 8 (2023)</div>
+                <a href="https://doi.org/10.1186/s43067-023-00074-5" class="pub-link" target="_blank">https://doi.org/10.1186/s43067-023-00074-5</a>
+            </div>
+
+            <div class="publication-item">
+                <div class="pub-title">Innovative machine learning approaches to predict the compressive strength of recycled plastic aggregate self-compacting concrete incorporating different waste ashes</div>
+                <div class="pub-authors">Ali, B.H.S.H., Faraj, R.H., <span class="me">Saeed, M.A.H.</span> et al.</div>
+                <div class="pub-venue">Multiscale and Multidisciplinary Modeling, Experiments and Design (2024) | Impact Factor: 2.2</div>
+                <a href="https://doi.org/10.1007/s41939-023-00356-5" class="pub-link" target="_blank">https://doi.org/10.1007/s41939-023-00356-5</a>
+            </div>
+
+            <div class="publication-item">
+                <div class="pub-title">Fast and Reliable System for Managing Customer Information of a Local Electric Power Generator</div>
+                <div class="pub-authors"><span class="me">Hama Saeed, M.</span></div>
+                <div class="pub-venue">International Journal of Innovative Technology and Interdisciplinary Sciences, 3(1), 372–380 (2020)</div>
+                <a href="https://doi.org/10.15157/IJITIS.2020.3.1.372-380" class="pub-link" target="_blank">https://doi.org/10.15157/IJITIS.2020.3.1.372-380</a>
+            </div>
+
+            <div class="publication-item">
+                <div class="pub-title">Web-Based dental patient education and management application</div>
+                <div class="pub-authors"><span class="me">Mariwan, H. S.</span>, Bahjat, T. A.</div>
+                <div class="pub-venue">Acta Informatica Malaysia, 5(1), 12-15 (2021)</div>
+                <a href="http://doi.org/10.26480/aim.01.2021.12.15" class="pub-link" target="_blank">http://doi.org/10.26480/aim.01.2021.12.15</a>
+            </div>
+
+            <div class="publication-item">
+                <div class="pub-title">Malware in Computer Systems: Problems and Solutions</div>
+                <div class="pub-authors"><span class="me">Hama Saeed, M. A.</span></div>
+                <div class="pub-venue">IJID (International Journal on Informatics for Development), 9(1), 1–8 (2020)</div>
+                <a href="https://doi.org/10.14421/ijid.2020.09101" class="pub-link" target="_blank">https://doi.org/10.14421/ijid.2020.09101</a>
+            </div>
+
+            <div class="publication-item">
+                <div class="pub-title">Real-Time Stock Market Trend Window Using XPath and Html Agility Pack</div>
+                <div class="pub-authors"><span class="me">Mariwan Hama Saeed</span></div>
+                <div class="pub-venue">Basrah Journal of Science, 40(3), 615–629 (2022)</div>
+                <a href="https://basjsci.net/index.php/bsj/article/view/223" class="pub-link" target="_blank">View Article</a>
+            </div>
+
+            <h3 style="margin-top: 32px; font-size: 20px;">Papers Under Review</h3>
+            <div class="publication-item">
+                <div class="pub-title">Empowering Text Classification with NLP and Explainable AI for Enhanced Interpretability</div>
+                <div class="pub-venue" style="color: #f59e0b; font-weight: 500;">Under Review</div>
+            </div>
+        </section>
+
+        <!-- Teaching Experience -->
+        <section class="section">
+            <h2>Teaching Experience</h2>
+            
+            <div class="teaching-entry">
+                <div class="teaching-header">
+                    <div class="institution-name">University of Halabja</div>
+                    <div class="date-range">January 2016 – Present</div>
+                </div>
+                <div class="teaching-description">
+                    Teaching IT and Computer Science courses at the College of Science and College of Basic Education, Halabja Province, Iraq
+                </div>
+            </div>
+
+            <div class="teaching-entry">
+                <div class="teaching-header">
+                    <div class="institution-name">Sulaimani Polytechnic University</div>
+                    <div class="date-range">November 2015 – July 2019</div>
+                </div>
+                <div class="teaching-description">
+                    Taught Programming and IT Project Management modules in College of Informatics (third and fourth stage), Sulaimani Province, Iraq
+                </div>
+            </div>
+
+            <div class="teaching-entry">
+                <div class="teaching-header">
+                    <div class="institution-name">Kurdistan Technical Institute</div>
+                    <div class="date-range">October 2017 – June 2018</div>
+                </div>
+                <div class="teaching-description">
+                    Taught Database module in IT department (first stage), Sulaimani Province, Iraq
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviewer Positions -->
+        <section class="section">
+            <h2>Reviewer Positions</h2>
+            <ul class="reviewer-list">
+                <li>IEEE Journal of Biomedical and Health Informatics</li>
+                <li>Journal of Medical Internet Research</li>
+                <li>ETRI Journal</li>
+                <li>Journal of Computer Security</li>
+                <li>Journal of Engineering Research (JER)</li>
+                <li>International Journal of Computing and Digital Systems</li>
+                <li>Knowledge Engineering and Data Science</li>
+                <li>e-Prime - Advances in Electrical Engineering, Electronics and Energy</li>
+            </ul>
+        </section>
+
+        <!-- Certificates -->
+        <section class="section">
+            <h2>Certificates</h2>
+            <div class="certificate-item">
+                <span class="cert-name">IELTS Certificate - 6.5</span>
+                <span class="cert-year">2024</span>
+            </div>
+            <div class="certificate-item">
+                <span class="cert-name">IREX - Iraq E-Learning Professional Training Program</span>
+                <span class="cert-year">2020</span>
+            </div>
+            <div class="certificate-item">
+                <span class="cert-name">Pedagogy and E-learning, Halabja University</span>
+                <span class="cert-year">2019</span>
+            </div>
+        </section>
+
+        <!-- Languages -->
+        <section class="section">
+            <h2>Languages</h2>
+            <div class="language-grid">
+                <div class="language-item">
+                    <div class="language-name">English</div>
+                    <div class="language-level">Professional Working Proficiency</div>
+                </div>
+                <div class="language-item">
+                    <div class="language-name">Kurdish (Sorani)</div>
+                    <div class="language-level">Native Language</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- References -->
+        <section class="section">
+            <h2>References</h2>
+            <div class="reference-grid">
+                <div class="reference-card">
+                    <div class="ref-name">Dr. Chnoor Maheadeen Rahman</div>
+                    <div class="ref-detail">Lecturer at the University of Charmo</div>
+                    <div class="ref-detail"><a href="/cdn-cgi/l/email-protection#a1e2c9cfceced38fd3c0c9ccc0cfe1c2c9c0d3ccced4cfc8d7c4d3d2c8d5d88fced3c6"><span class="__cf_email__" data-cfemail="d390bbbdbcbca1fda1b2bbbeb2bd93b0bbb2a1bebca6bdbaa5b6a1a0baa7aafdbca1b4">[email&#160;protected]</span></a></div>
+                    <div class="ref-detail">+964 770 195 4402</div>
+                </div>
+                <div class="reference-card">
+                    <div class="ref-name">Dr. Jaza Mahmood Abdullah</div>
+                    <div class="ref-detail">Lecturer at the University of Sulaimani</div>
+                    <div class="ref-detail"><a href="/cdn-cgi/l/email-protection#f6bc978c97d8979492839a9a979eb683989f8085839ad8939283d89f87"><span class="__cf_email__" data-cfemail="5b113a213a753a393f2e37373a331b2e35322d282e37753e3f2e75322a">[email&#160;protected]</span></a></div>
+                    <div class="ref-detail">+964 770 199 5388</div>
+                </div>
+                <div class="reference-card">
+                    <div class="ref-name">Dr. Nwayyin Najat Mohammed</div>
+                    <div class="ref-detail">Lecturer at the University of Sulaimani</div>
+                    <div class="ref-detail"><a href="/cdn-cgi/l/email-protection#93ddf2e4f6f6fdbdfee6fbf2fefef6f7d3e6fdfae5e0e6ffbdf6f7e6bdfae2"><span class="__cf_email__" data-cfemail="de90bfa9bbbbb0f0b3abb6bfb3b3bbba9eabb0b7a8adabb2f0bbbaabf0b7af">[email&#160;protected]</span></a></div>
+                    <div class="ref-detail">+964 770 158 5848</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Add scrolled class to header on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll animation on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '0';
+                        entry.target.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            entry.target.style.transition = 'all 0.5s ease';
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
